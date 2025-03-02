@@ -22,12 +22,20 @@ import unittest
 def add(x,y):
     return x+y
 
+def divide(x,y):
+    if y ==0:
+        raise ValueError("Denominator cannot be zero")
+    return x/y
+
 class TestCacl(unittest.TestCase):
     def test_add(self):
         self.assertEqual(add(1,6),7)
         self.assertNotEqual(add(1,6), 8)
         self.assertTrue(add(1,3)==4)
         self.assertFalse(add(1,3)==5)
+    
+    def test_divide(self):
+        self.assertRaises(ValueError, divide,4,0)
 
 if __name__ =="__main__":
     unittest.main()
